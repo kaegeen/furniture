@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Furniture Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function addFurniture() {
+            const name = document.getElementById('furnitureName').value.trim();
+            const price = document.getElementById('furniturePrice').value.trim();
+            const description = document.getElementById('furnitureDescription').value.trim();
+            
+            if (!name || !price || !description) {
+                alert('Please fill out all fields.');
+                return;
+            }
+            
+            const furnitureList = document.getElementById('furnitureList');
+            const newItem = document.createElement('div');
+            newItem.className = "bg-gray-100 p-4 rounded-lg shadow mb-4";
+            newItem.innerHTML = `<h3 class="font-bold">${name}</h3><p class="text-gray-700">${description}</p><p class="text-green-600 font-bold">$${price}</p>`;
+            furnitureList.appendChild(newItem);
+            
+            document.getElementById('furnitureName').value = '';
+            document.getElementById('furniturePrice').value = '';
+            document.getElementById('furnitureDescription').value = '';
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 p-4 text-center">
+        <h1 class="text-white text-2xl font-bold">Online Furniture Store</h1>
+    </nav>
+
+    <!-- Furniture Listing Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-8">Sell Your Furniture</h2>
+            <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+                <label for="furnitureName" class="block text-gray-700 font-bold mb-2">Furniture Name</label>
+                <input type="text" id="furnitureName" class="w-full p-3 border rounded-lg mb-4" placeholder="Enter name">
+                
+                <label for="furniturePrice" class="block text-gray-700 font-bold mb-2">Price ($)</label>
+                <input type="number" id="furniturePrice" class="w-full p-3 border rounded-lg mb-4" placeholder="Enter price">
+                
+                <label for="furnitureDescription" class="block text-gray-700 font-bold mb-2">Description</label>
+                <textarea id="furnitureDescription" class="w-full p-3 border rounded-lg mb-4" rows="4" placeholder="Enter description"></textarea>
+                
+                <button onclick="addFurniture()" class="w-full px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600">
+                    Add Furniture
+                </button>
+            </div>
+            <div id="furnitureList" class="mt-8 max-w-lg mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-500 text-white text-center py-4">
+        <p>&copy; 2025 Online Furniture Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>
